@@ -14,14 +14,14 @@
 # Proxy API calls to the backend
 [[redirects]]
   from = "/api/*"
-  to = "https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com/api/:splat"
+  to = "https://venturly-api.onrender.com/api/:splat"
   status = 200
   force = true
 
 # Proxy uploaded media/KYC docs to the backend
 [[redirects]]
   from = "/uploads/*"
-  to = "https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com/uploads/:splat"
+  to = "https://venturly-api.onrender.com/uploads/:splat"
   status = 200
   force = true
 
