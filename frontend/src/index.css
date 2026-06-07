@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink text-slate-200 font-sans antialiased;
+  background-image: radial-gradient(60% 50% at 50% 0%, rgba(124, 92, 255, 0.12), transparent 70%);
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/20;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand-600 shadow-glow hover:shadow-[0_0_50px_-8px_rgba(124,92,255,0.7)];
+  }
+  .btn-ghost {
+    @apply btn bg-white/5 text-white hover:bg-white/10 border border-white/10;
+  }
+  .btn-outline {
+    @apply btn border border-brand/50 text-brand-400 hover:bg-brand/10;
+  }
+  .input {
+    @apply w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-slate-500 outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-300 mb-1.5;
+  }
+  .card {
+    @apply rounded-2xl bg-card border border-white/10;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}

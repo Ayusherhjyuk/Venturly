@@ -1,0 +1,32 @@
+# Netlify config for the Venturly frontend (Vite/React SPA)
+# It builds the app and proxies API + uploaded media to the Render backend,
+# so the React code keeps using relative /api and /uploads paths (no CORS).
+
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+# ---- IMPORTANT ----
+# After you deploy the backend on Render, replace the two URLs below with your
+# actual Render service URL (e.g. https://venturly-api.onrender.com), then redeploy.
+
+# Proxy API calls to the backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# Proxy uploaded media/KYC docs to the backend
+[[redirects]]
+  from = "/uploads/*"
+  to = "https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com/uploads/:splat"
+  status = 200
+  force = true
+
+# SPA fallback — every other route serves index.html (React Router handles it)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

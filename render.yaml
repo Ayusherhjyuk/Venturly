@@ -1,0 +1,32 @@
+# Render blueprint for the Venturly backend (Express API).
+# In Render: New + → Blueprint → connect this repo → it reads this file.
+# You'll be prompted to fill the secret env vars (marked sync:false) in the dashboard.
+
+services:
+  - type: web
+    name: venturly-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      # MongoDB Atlas connection string (REQUIRED in production)
+      - key: MONGO_URI
+        sync: false
+      # Auth
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      # Razorpay (set your test/live keys in the dashboard)
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: PAYMENT_MODE
+        value: live
+      # Your Netlify site URL, e.g. https://venturly.netlify.app (for CORS if called directly)
+      - key: CLIENT_URL
+        sync: false

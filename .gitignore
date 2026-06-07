@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Env / secrets
+.env
+*.local
+
+# Build output
+dist/
+build/
+
+# Local persistent DB (mongodb-memory-server)
+.mongo-data/
+
+# Uploaded files (don't commit user uploads)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Reference screenshots
+*.png
+
+# OS / editor
+.DS_Store
+.vscode/
+*.log
